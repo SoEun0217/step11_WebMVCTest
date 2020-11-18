@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean class="kosta.mvc.model.dto.ProductDTO" id="p1">
+  <property name="name" value="새우깡"/>
+  <property name="code" value="A01"/>
+  <property name="detail" value="냠냠굿"/>
+  <property name="price" value="1500"/>
+</bean>
+<bean class="kosta.mvc.model.dto.ProductDTO" id="p2">
+  <property name="name" value="초코송이"/>
+  <property name="code" value="A02"/>
+  <property name="detail" value="달달굿"/>
+  <property name="price" value="1800"/>
+</bean>
+<bean class="kosta.mvc.model.dto.ProductDTO" id="p3">
+  <property name="name" value="포스틱"/>
+  <property name="code" value="A03"/>
+  <property name="detail" value="굿굿굿"/>
+  <property name="price" value="2000"/>
+</bean>
+</beans>
