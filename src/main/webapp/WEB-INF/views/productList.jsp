@@ -44,7 +44,7 @@ ${pageContext.request.contextPath}
   </c:forEach>
   
   <tr>
-    <th colspan="6"><a href="insertForm.ko">상품등록하기</a></th>
+    <th colspan="6"><a href="insertForm.kosta">상품등록하기</a></th>
    </tr>
  
 </table>

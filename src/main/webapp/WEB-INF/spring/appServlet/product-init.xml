@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 <bean class="kosta.mvc.model.dto.ProductDTO" id="p1">
-  <property name="name" value="새우깡"/>
+<property name="name" value="새우깡"></property>
   <property name="code" value="A01"/>
   <property name="detail" value="냠냠굿"/>
   <property name="price" value="1500"/>
