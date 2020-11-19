@@ -13,6 +13,22 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+	<!-- post방식 한글 인코딩 처리하기 -->
+	<filter>
+		<filter-name>charaterEncoding</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>charaterEncoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 	<!-- Processes application requests -->
 	<servlet>
@@ -31,6 +47,8 @@
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>*.kosta</url-pattern>
+		<url-pattern>/del/*</url-pattern>
+		<url-pattern>/detail/*</url-pattern>
 	</servlet-mapping>
 
 </web-app>

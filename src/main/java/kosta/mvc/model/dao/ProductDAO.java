@@ -20,6 +20,11 @@ public interface ProductDAO {
 	 * 삭제
 	 * */
 	 int delete(String code)throws MyErrorException;
+	 
+	 /**
+	  * 상품코드에 해당하는 상품 정보 검색하기
+	  * */
+	 ProductDTO searchByCode(String code)throws MyErrorException;
 }
 
 

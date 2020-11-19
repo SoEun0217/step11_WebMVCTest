@@ -20,4 +20,9 @@ public interface ProductService {
 		 * 삭제
 		 * */
 		 int delete(String code)throws MyErrorException;
+		 
+		 /**
+		  * 상세보기
+		  * */
+		 ProductDTO detail(String code) throws MyErrorException;
 }

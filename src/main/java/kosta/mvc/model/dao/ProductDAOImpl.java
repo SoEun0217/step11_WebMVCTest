@@ -1,5 +1,6 @@
 package kosta.mvc.model.dao;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,31 +22,38 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public int insert(ProductDTO productDTO) throws MyErrorException {
-		String code = productDTO.getCode();
-		int result = 0;
-		for(ProductDTO p:list) {
-			if(p.getCode().equals(code)) {
-				throw new MyErrorException("코드가 중복입니다.");
-			}else {
-				list.add(productDTO);
-				result =1;
-			}
+		//중복체크하자..
+		if(this.searchByCode(productDTO.getCode())!=null) {
+			throw new MyErrorException(productDTO.getCode()+"코드는 중복입니다.");
 		}
-		return result;
+		
+		list.add(productDTO);
+		return 1;
 		
 	}
 
 	@Override
 	public int delete(String code) throws MyErrorException {
-		int result = 0;
-		for(ProductDTO p:list) {
-			if(p.getCode().equals(code)) {
-				list.remove(p);
-				result =  1;
+		ProductDTO dto = this.searchByCode(code);
+		if(dto==null) {
+			throw new MyErrorException(code+"에 해당하는 정보를 찾을 수 없습니다.");
+		}
+		list.remove(dto);
+		return 1;
+	}
+	
+	/**
+	 * 상품코드에 해당하는 상품정보 가져오기
+	 * */
+	@Override
+	public ProductDTO searchByCode(String code) throws MyErrorException {
+		for(ProductDTO dto:list) {
+			if(dto.getCode().equals(code)) {
+				return dto;
 			}
 		}
-			
-		return result;
+		return null;//없으면 null리턴..
 	}
+	
 
 }

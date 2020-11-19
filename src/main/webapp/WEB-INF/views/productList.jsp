@@ -14,8 +14,17 @@
 </style>
 
 ${pageContext.request.contextPath}
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-2.2.4.min.js"></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	 $("a[href='#']").click(function(){
+		if(confirm("삭제하시겠어요?")){
+			var code= $(this).attr("name");
+			location.href="${pageContext.request.contextPath}/del/"+code;
+		} 
+	 });
+})
+</script>
 
 
 </head>
@@ -35,11 +44,11 @@ ${pageContext.request.contextPath}
   <c:forEach items="${list}" var="p" varStatus="s">
   <tr>
   <td>${s.count}</td>
-  <td>${p.code}</td>
+  <td><a href="read.kosta?code=${p.code}">${p.code}</a></td>
   <td>${p.name}</td>
-  <td>${p.price}</td>
+  <td><fmt:formatNumber value="${p.price}"></fmt:formatNumber>원</td>
   <td>${p.detail}</td> 
-  <td><input type="button" value="삭제하기"/></td> 
+  <td><a href="#" name="${p.code}">삭제하기</a></td> 
   </tr>
   </c:forEach>
   

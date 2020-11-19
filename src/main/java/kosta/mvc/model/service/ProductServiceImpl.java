@@ -23,18 +23,23 @@ public class ProductServiceImpl implements ProductService {
 	}
 	@Override
 	public int insert(ProductDTO productDTO) throws MyErrorException {
-		int result = 0;
-		if(productDTO.getPrice()>=1000&&productDTO.getPrice()<=10000) {
-			result = dao.insert(productDTO);
-		}else {
-			throw new MyErrorException("가격이 입력범위를 초과하였습니다.");
+		
+		if(productDTO.getPrice()<1000||productDTO.getPrice()>10000) {
+			throw new MyErrorException("가격이 입력범위는 1000~10000원이므로 초과하였습니다.");
 		}
-		return result ;
+		 dao.insert(productDTO);
+		return 1 ;
 	}
 	@Override
 	public int delete(String code) throws MyErrorException {
-		int result = dao.delete(code);
-		return result;
+		dao.delete(code);
+		return 1;
+	}
+	@Override
+	public ProductDTO detail(String code) throws MyErrorException {
+		ProductDTO dto = dao.searchByCode(code);
+		if(dto==null)throw new MyErrorException(code+"정보가 잘못되어 검색할 수 없습니다.");
+		return dto;
 	}
 
 }
